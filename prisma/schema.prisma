@@ -42,6 +42,7 @@ model Cord {
 
 model Score {
   id         Int     @id @default(autoincrement())
+  seconds    Decimal
   username   String
   setting    Setting @relation(fields: [setting_id], references: [id])
   setting_id Int

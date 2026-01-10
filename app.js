@@ -4,6 +4,7 @@ const chars = require("./routes/chars");
 const settings = require("./routes/settings");
 const cors = require("cors");
 const cords = require("./routes/cords");
+const scores = require("./routes/scores");
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use("/chars", chars);
 app.use("/settings", settings);
 app.use("/cords", cords);
+app.use("/scores", scores);
 
 app.listen(port, (err) => {
   if (err) console.log(err);
