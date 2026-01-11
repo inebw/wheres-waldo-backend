@@ -1,7 +1,9 @@
 const { prisma } = require("../lib/prisma");
 
 const getScores = async (req, res) => {
-  const scores = await prisma.score.findMany();
+  const scores = await prisma.score.findMany({
+    orderBy: [{ seconds: "asc" }],
+  });
   res.json(scores);
 };
 
