@@ -11,12 +11,19 @@ const postScores = async (req, res) => {
   const { username, seconds, setting_id } = req.body;
   await prisma.score.create({
     data: {
-      username,
+      username: `${username ? username : "Anonymous"}`,
       seconds: parseFloat(seconds),
       setting_id: parseInt(setting_id),
     },
   });
-  res.sendStatus(201);
+  const user = await prisma.score.findFirst({
+    where: {
+      username: `${username ? username : "Anonymous"}`,
+      seconds: parseFloat(seconds),
+      setting_id: parseInt(setting_id),
+    },
+  });
+  res.json({ scoreId: user.id });
 };
 
 module.exports = {
