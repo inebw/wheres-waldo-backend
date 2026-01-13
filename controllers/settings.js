@@ -1,5 +1,4 @@
 const { prisma } = require("../lib/prisma");
-const settings = require("../routes/settings");
 
 const getSettings = async (req, res) => {
   const settings = await prisma.setting.findMany();

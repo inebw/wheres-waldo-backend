@@ -1,8 +1,12 @@
 const { prisma } = require("../lib/prisma");
 
 const getScores = async (req, res) => {
+  const { settingId } = req.params;
   const scores = await prisma.score.findMany({
     orderBy: [{ seconds: "asc" }],
+    where: {
+      setting_id: parseInt(settingId),
+    },
   });
   res.json(scores);
 };

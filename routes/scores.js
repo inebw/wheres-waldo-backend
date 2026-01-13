@@ -3,7 +3,7 @@ const { getScores, postScores } = require("../controllers/scores");
 
 const scores = Router();
 
-scores.get("/", getScores);
+scores.get("/:settingId", getScores);
 scores.post("/", postScores);
 
 module.exports = scores;
